@@ -2,16 +2,17 @@ import os
 from pathlib import Path
 import argparse 
 parser = argparse.ArgumemtParser(description='file organiser')
-parser.add_argument('s', '--sort', type=str, help='enter "s" to sort files')
+parser.add_argument('--sort', type=bool, store=True, help='enter "s" to sort files')
 args = parser.parse_args()
-
-if args.s == 's':
-    SUBDIRECTORIES = {
+   
+SUBDIRECTORIES = {
         "DOCUMENTS": ['.pdf', '.rtf', '.txt'],
         "AUDIO": ['.m4a', '.m4b', '.mp3'],
         "VIDEOS": ['.mov', '.avi', '.mp4'],
         "IMAGES": ['.jpg', '.jpeg', '.png']
     }
+if args.sort:
+
     def pickDirectory(value):
         for category, suffixes in SUBDIRECTORIES.items():
             for suffix in suffixes:
