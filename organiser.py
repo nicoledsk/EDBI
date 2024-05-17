@@ -29,8 +29,7 @@ if args.sort:
                 if suffix == value:
                     return category
                 return "MISC"
-
-    # Organising directory. For loop that loops through all the files. usin 'Path' to get file paths
+                
     def organiseDirectory():
         """Loops through every item in the current working directory to get the file type, so we can properly organize it. Path is also pulled for each item so that we can move them.
         Calls function.
