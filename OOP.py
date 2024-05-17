@@ -1,5 +1,5 @@
 class BankAccount:
-    """ A class to represent a bank accoun. 
+    """ A class to represent a bank account. 
     ...
     
     Attributes
@@ -35,7 +35,7 @@ class BankAccount:
         self.account_number = account_number
         self.owner_name = owner_name
         self.balance = balance
-    def deposit(self, amount = 0 : int) -> imt:
+    def deposit(self, amount: int = 0) -> int:
         """Deposits specified amount in account.
         if amount isn't passed, default amount is used.
 
@@ -46,7 +46,7 @@ class BankAccount:
         """"
         self.balance +=  amount 
        
-    def withdraw(self, amount = 0 : int) -> int:
+    def withdraw(self, amount: int = 0) -> int:
         """Withdraws specified amount from account.
         if amount isn't passed, default amount is used
 
