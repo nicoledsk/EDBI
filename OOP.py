@@ -1,3 +1,7 @@
+import logging
+
+logging.basicConfig(filename='BankAccount.log', level=logging.INFO, format ='%(asctime)s:%(levelname)s:%(message)s')
+
 class BankAccount:
     """ A class to represent a bank account. 
     ...
@@ -19,7 +23,7 @@ class BankAccount:
         withdraws specified amount from account
     get_balance()
         pulls current account balance 
-    """"
+    """
     def __init__(self, account_number, owner_name, balance=0):
         """ 
         Parameters
@@ -35,6 +39,9 @@ class BankAccount:
         self.account_number = account_number
         self.owner_name = owner_name
         self.balance = balance
+
+        logging.info('Created Bank Account. Account Number:{} - Account Holder:{} - Account Balance:{}'.format(self.account_number, self.owner_name, self.balance))
+
     def deposit(self, amount: int = 0) -> int:
         """Deposits specified amount in account.
         if amount isn't passed, default amount is used.
@@ -43,9 +50,11 @@ class BankAccount:
         ----------
         amount : int, optional 
             The amount deposited. Deault is 0 
-        """"
+        """
         self.balance +=  amount 
        
+        logging.info('{} deposited. New balance is {}'.format(amount, self.balance))
+
     def withdraw(self, amount: int = 0) -> int:
         """Withdraws specified amount from account.
         if amount isn't passed, default amount is used
@@ -59,22 +68,25 @@ class BankAccount:
         ------
         ValueError
             if withdawal amount is greater than account balance. 
-        """"
+        """
         if self.balance < amount:
-            raise ValueError("You cannot withdraw more than you account balance.") 
+            logging.exception("You cannot withdraw more than your account balance.") 
         else:
             self.balance -=  amount
+        logging.info('{} withdrawn. New balance is {}'.format(amount, self.balance))
 
     def get_balance(self):
         """Returns current balance."""
-       return self.balance
+        logging.info('Balance is {}'.format(self.balance))
+        return self.balance
+        
+        
 
     
 Brianna = BankAccount(12345, 'Brianna Kwami', 5000)
 Nicole = BankAccount(4567, 'Nicole Kwami', 98765)
 
-Brianna.withdraw(136)
+Brianna.withdraw(6578)
 print(Brianna.get_balance())
 Nicole.deposit(4500)
 print(Nicole.get_balance())
-
